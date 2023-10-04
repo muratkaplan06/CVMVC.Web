@@ -1,0 +1,101 @@
+﻿@using System.Drawing
+@using CVMVC.Web.Models.Entity
+@model List<Skills>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+    string barColor = "";
+    string badgeColor = "";
+}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Skills Table</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+
+                    <table class="table table-bordered text-center mt-2">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">ID</th>
+                                <th>ID</th>
+                                <th>DEGREE</th>
+                                <th style="width: 40px">RATIO</th>
+                                <th>Delete</th>
+                                <th>EDIT</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                if (item.ratio >= 0 && item.ratio <= 50)
+                                {
+                                    barColor = "progress-bar bg-danger";
+                                    badgeColor = "badge bg-danger";
+                                }
+                                if (item.ratio >= 51 && item.ratio <= 70)
+                                {
+                                    barColor = "progress-bar bg-warning";
+                                    badgeColor = "badge bg-warning";
+                                }
+                                if (item.ratio >= 71 && item.ratio <= 84)
+                                {
+                                    barColor = "progress-bar bg-success";
+                                    badgeColor = "badge bg-success";
+                                }
+                                if (item.ratio >= 85 && item.ratio <= 100)
+                                {
+                                    barColor = "progress-bar bg-primary";
+                                    badgeColor = "badge bg-primary";
+                                }
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.skill</td>
+
+                                    <td>
+                                        <div class="progress progress-xs">
+                                            <div class="@barColor" style="width: @item.ratio%"></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="@badgeColor">%@item.ratio</span></td>
+                                    <td>
+                                        <a href="/Skill/DeleteSkill/@item.ID" class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                            Delete
+                                        </a>
+
+                                    </td>
+                                    <td>
+                                        <a href="/Skill/UpdateSkill/@item.ID" class="btn btn-info btn-sm">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <a href="/Skill/AddSkill/" class="btn btn-primary">
+        <i class="fas fa-plus" style="color: #ffffff;"></i>
+    </a>
+
+</div>
+
+
+
+

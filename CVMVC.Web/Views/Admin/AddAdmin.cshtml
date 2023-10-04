@@ -1,0 +1,71 @@
+﻿@model CVMVC.Web.Models.Entity.Admin
+@{
+    ViewBag.Title = "AddAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Add Admin</h2>
+    </div>
+    <div class="row">
+
+        <div class="col-md-9 mb-md-0 mb-5">
+            @using (Html.BeginForm("AddAdmin", "Admin",
+                new { ReturnUrl = Request.QueryString["ReturnUrl"] },
+                FormMethod.Post,
+                new { @class = "form-group" }
+                ))
+            {
+                
+                if (ViewBag.ErrorMessage!=null)
+                {
+                    <div class="alert alert-danger">
+                        <p>@ViewBag.ErrorMessage</p>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.username, "Email", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.username, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Email",
+                                autofocus = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.password, "Password", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.password, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Password",
+                                autofocus = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-4 mt-3">
+                        <button class="btn btn-lg btn-primary btn-block" style="width:200px" type="submit">
+                            <i class="fas fa-plus" style="color: #ffffff;"></i>
+                        </button>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</div>
+

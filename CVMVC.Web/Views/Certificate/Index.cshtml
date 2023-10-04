@@ -1,0 +1,62 @@
+﻿@using CVMVC.Web.Models.Entity
+@model List<Certificates>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="tab-pane" id="timeline">
+                        <div class="timeline timeline-inverse">
+                            @foreach (var item in Model)
+                            {
+                                <div class="time-label">
+                                    <span class="bg-success">
+                                        @item.date
+                                    </span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-certificate bg-primary"></i>
+                                    <div class="timeline-item">
+                                        <div class="timeline-body">
+                                            @item.description
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a href="/Certificate/UpdateCertificate/@item.ID" class="btn btn-primary">
+                                                <i class="fas fa-pencil-alt"></i>
+                                                Edit
+                                            </a>
+                                            <a href="/Certificate/DeleteCertificate/@item.ID" class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                                delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <a href="/Certificate/AddCertificate/" class="btn btn-primary">
+        <i class="fas fa-plus" style="color: #ffffff;"></i>
+    </a>
+</div>
+
+
+
+
+
+
+

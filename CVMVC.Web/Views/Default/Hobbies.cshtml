@@ -1,0 +1,14 @@
+﻿@using CVMVC.Web.Models.Entity
+@model List<Hobbies>
+
+<section class="resume-section" id="interests">
+    <div class="resume-section-content">
+        <h2 class="mb-5">Interests</h2>
+        @foreach (var item in Model)
+         {
+            <p class="text-capitalize font-weight-bold">@item.title1</p>
+            <p class="mb-3">@item.title2</p>
+         }
+        
+    </div>
+</section>

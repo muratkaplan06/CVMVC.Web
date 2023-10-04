@@ -1,0 +1,119 @@
+﻿@model CVMVC.Web.Models.Entity.Communications
+
+
+
+<div class="container">
+    <div class="row">
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Contact me</h2>
+    </div>
+    <div class="row">
+
+        <div class="col-md-9 mb-md-0 mb-5">
+            @using (Html.BeginForm("Index", "Default",
+                new { ReturnUrl = Request.QueryString["ReturnUrl"] },
+                FormMethod.Post,
+                new { @class = "form-signin" }
+                ))
+            {
+                if (ViewBag.Error== "invalid Attempt")
+                {
+                    <div class="alert alert-danger">
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        <p>You have reached the maximum message limit for today.</p>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.name, "Name", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.name, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Name",
+                                autofocus = ""
+                            })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.mail, "Email Address", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.mail, new
+                            {
+                                @class = "form-control",
+                                placeholder = "email address",
+                                autofocus = ""
+                            })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.subject, "Subject", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.subject, new
+                            {
+                                @class = "form-control",
+                                placeholder = "subject",
+                                autofocus = ""
+                            })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            @Html.LabelFor(m => m.message, "Message", new { @class = "control-label" })
+                            @Html.TextAreaFor(m => m.message, new
+                            {
+                                @class = "form-control",
+                                autofocus = ""
+                            })
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row text-center text-md-left">
+                    <div class="col-4">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Send</button>
+                    </div>
+                </div>
+
+             }
+
+
+
+
+
+
+
+            <div class="status"></div>
+        </div>
+        <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li>
+                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>Ankara, Turkey</p>
+                </li>
+
+                <li>
+                    <i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>05.....</p>
+                </li>
+
+                <li>
+                    <i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>muratkaplan061989@gmail.com</p>
+                </li>
+            </ul>
+        </div>
+        <!--Grid column-->
+
+    </div>
+
+</div>

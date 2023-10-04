@@ -1,0 +1,69 @@
+﻿@model CVMVC.Web.Models.Entity.Certificates
+@{
+    ViewBag.Title = "AddCertificate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Add Experience</h2>
+    </div>
+    <div class="row">
+
+        <div class="col-md-9 mb-md-0 mb-5">
+            @using (Html.BeginForm("AddCertificate", "Certificate",
+                new { ReturnUrl = Request.QueryString["ReturnUrl"] },
+                FormMethod.Post,
+                new { @class = "form-group" }
+                ))
+            {
+                if (IsPost)
+                {
+                    <div class="alert alert-danger">
+                        <p>Please fill all field correctly.</p>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.description, "Description", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.description, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Description",
+                                autofocus = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.date, "Date", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.date, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Date",
+                                autofocus = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-4 mt-3">
+                        <button class="btn btn-lg btn-primary btn-block" style="width:200px" type="submit">
+                            <i class="fas fa-plus" style="color: #ffffff;"></i>
+                        </button>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,63 @@
+﻿@model CVMVC.Web.Models.Entity.Hobbies
+@{
+    ViewBag.Title = "UpdateHobby";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Edit Hobby</h2>
+    </div>
+    <div class="row">
+
+        <div class="col-md-9 mb-md-0 mb-5">
+            @using (Html.BeginForm("UpdateHobby", "Hobby",
+                 new { ReturnUrl = Request.QueryString["ReturnUrl"] },
+                 FormMethod.Post,
+                 new { @class = "form-group" }
+                 ))
+            {
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.title1, "Title1", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.title1, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Title1",
+                                autofocus = ""
+                            })
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.title2, "Title2", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.title2, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Title2",
+                                autofocus = ""
+                            })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-4 mt-3">
+                        <button class="btn btn-lg btn-primary btn-block" style="width:200px" type="submit">
+                            <i class="fas fa-pencil-alt"></i>
+                            Edit
+                        </button>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+
+</div>
+

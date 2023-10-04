@@ -1,0 +1,72 @@
+﻿@model CVMVC.Web.Models.Entity.Skills
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Add Skill</h2>
+    </div>
+    <div class="row">
+
+        <div class="col-md-9 mb-md-0 mb-5">
+            @using (Html.BeginForm("AddSkill", "Skill",
+                new { ReturnUrl = Request.QueryString["ReturnUrl"] },
+                FormMethod.Post,
+                new { @class = "form-group" }
+                ))
+            {
+                if (IsPost)
+                {
+                    <div class="alert alert-danger">
+                        <p>Please fill all field correctly.</p>
+                    </div>
+                }
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.skill, "Skill", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.skill, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Skill",
+                                autofocus = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.skill, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.ratio, "Ratio", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.ratio, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Ratio",
+                                autofocus = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.ratio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row text-center">
+                    <div class="col-4 mt-3">
+                        <button class="btn btn-lg btn-primary btn-block" style="width:200px" type="submit">
+                            <i class="fas fa-plus" style="color: #ffffff;"></i>
+                        </button>
+                    </div>
+                </div>
+
+            }
+
+
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,62 @@
+﻿@using CVMVC.Web.Models.Entity
+@model  List<About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4" style="width:40rem;">
+
+    <form method="post">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-6 mb-2">
+                    <label>FirstName</label>
+                    <input type="text" class="form-control" name="firstname" value="@item.firstname">
+                </div>
+                <div class="col-6">
+                    <label>LastName</label>
+                    <input type="text" class="form-control" name="lastname" value="@item.lastname">
+                </div>
+
+                <div class="col-12 mb-2">
+                    <label>Address</label>
+                    <textarea rows="3" class="form-control" name="address">@item.address</textarea>
+                </div>
+                <div class="col-12 mb-2">
+                    <label>Phone Number</label>
+                    <input type="text" class="form-control" name="phonenumber" value="@item.phonenumber">
+                </div>
+                <div class="col-12 mb-2">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="mail" value="@item.mail">
+                </div>
+                <div class="col-12 mb-2">
+                    <label>Description</label>
+                    <textarea rows="5" class="form-control" name="description">@item.description</textarea>
+                </div>
+                <div class="col-12 mb-2">
+                    <label>Image</label>
+                    <input type="text" class="form-control" name="image" value="@item.image">
+                </div>
+            </div>
+        }
+        <div class="row justify-content-center">
+            <button class="btn btn-success">
+                <i class="fas fa-pencil-alt"></i>
+                edit
+            </button>
+        </div>
+
+    </form>
+
+
+</div>
+

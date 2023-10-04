@@ -1,0 +1,17 @@
+﻿@using CVMVC.Web.Models.Entity
+@model List<Experiences>
+
+<div>
+    @foreach (var item in Model)
+     {
+        <div class="d-flex flex-column flex-md-row justify-content-between">
+            <div class="flex-grow-1">
+                <h3 class="mb-0">@item.title</h3>
+                <div class="subheading mb-3">@item.subtitle</div>
+                <p>@item.description</p>
+            </div>
+            <div class="flex-shrink-0"><span class="text-primary">@item.date</span></div>
+        </div>
+     }
+    
+</div>

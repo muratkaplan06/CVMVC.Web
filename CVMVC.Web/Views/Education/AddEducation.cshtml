@@ -1,0 +1,117 @@
+﻿@model CVMVC.Web.Models.Entity.Educations
+@{
+    ViewBag.Title = "AddEducation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Add Experience</h2>
+    </div>
+    <div class="row">
+
+        <div class="col-md-9 mb-md-0 mb-5">
+            @using (Html.BeginForm("AddEducation", "Education",
+                new { ReturnUrl = Request.QueryString["ReturnUrl"] },
+                FormMethod.Post,
+                new { @class = "form-group" }
+                ))
+            {
+                if (IsPost)
+                {
+                    <div class="alert alert-danger">
+                        <p>Please fill all field.</p>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.title, "Title", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.title, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Title",
+                                autofocus = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.subtitle1, "Subtitle1", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.subtitle1, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Subtitle1",
+                                autofocus = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.subtitle1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.subtitle2, "Subtitle2", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.subtitle2, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Subtitle2",
+                                autofocus = ""
+                            })
+                            @Html.ValidationMessageFor(m => m.subtitle2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="md-form">
+                            @Html.LabelFor(m => m.gpa, "GPA", new { @class = "control-label" })
+                            @Html.TextAreaFor(m => m.gpa, new
+                       {
+                           @class = "form-control",
+                           placeholder = "Gpa",
+                           autofocus = ""
+                       })
+                            @Html.ValidationMessageFor(m => m.gpa, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            @Html.LabelFor(m => m.date, "Date", new { @class = "control-label" })
+                            @Html.TextBoxFor(m => m.date, new
+                            {
+                                @class = "form-control",
+                                placeholder = "Date",
+                                autofocus = ""
+                            })
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row text-center">
+                    <div class="col-4 mt-3">
+                        <button class="btn btn-lg btn-primary btn-block" style="width:200px" type="submit">
+                            <i class="fas fa-plus" style="color: #ffffff;"></i>
+                        </button>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
